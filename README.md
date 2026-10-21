@@ -25,7 +25,7 @@
 
 <p align="center">
     <a href="https://github.com/Botspot/pi-apps/stargazers"><img src="https://img.shields.io/github/stars/Botspot/pi-apps" alt="stars"></a>
-    <a href="https://github.com/Botspot/pi-apps/network/members"><img src="https://img.shields.io/github/forks/Botspot/pi-apps" alt="forks"></a>
+    <a href="https://github.com/Botspot/pi-apps/network/members"><img src="https://img.shields.io/github/forks/Jaypph/win-apps" alt="forks"></a>
     <a href="https://github.com/Botspot/pi-apps/graphs/contributors"><img src="https://img.shields.io/github/contributors/Botspot/pi-apps" alt="contributors"></a>
     <a href="https://github.com/Botspot/pi-apps/pulls"><img src=https://img.shields.io/github/issues/Jaypph/win-apps?style=flat
  alt="prs"></a>
