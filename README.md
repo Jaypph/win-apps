@@ -27,7 +27,8 @@
     <a href="https://github.com/Botspot/pi-apps/stargazers"><img src="https://img.shields.io/github/stars/Botspot/pi-apps" alt="stars"></a>
     <a href="https://github.com/Botspot/pi-apps/network/members"><img src="https://img.shields.io/github/forks/Botspot/pi-apps" alt="forks"></a>
     <a href="https://github.com/Botspot/pi-apps/graphs/contributors"><img src="https://img.shields.io/github/contributors/Botspot/pi-apps" alt="contributors"></a>
-    <a href="https://github.com/Botspot/pi-apps/pulls"><img src="https://img.shields.io/github/issues-pr/Botspot/pi-apps" alt="prs"></a>
+    <a href="https://github.com/Botspot/pi-apps/pulls"><img src=https://img.shields.io/github/issues/Jaypph/win-apps?style=flat
+ alt="prs"></a>
     <a href="https://github.com/Botspot/pi-apps/issues?q=is%3Aopen+is%3Aissue+label%3Abug"><img src="https://img.shields.io/github/issues/Botspot/pi-apps/bug?color=red&label=bugs"></a>
     <a href="https://github.com/Botspot/pi-apps/issues?q=is%3Aopen+is%3Aissue+label%3A%22App+Request%22"><img src="https://img.shields.io/github/issues/Botspot/pi-apps/App%20Request?color=Green&label=app%20requests"></a>
     <a href="https://github.com/Botspot/pi-apps/blob/master/COPYING"><img src="https://img.shields.io/github/license/Botspot/pi-apps" alt="license"></a>
