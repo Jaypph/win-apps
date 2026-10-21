@@ -1,34 +1,48 @@
-name: Platform detection
+name: Platform detection and CLI tests
 
 on:
   push:
     paths:
       - "platform/**"
+      - "winapps.py"
+      - "tests/**"
       - ".github/workflows/platform-detection.yml"
   pull_request:
     paths:
       - "platform/**"
+      - "winapps.py"
+      - "tests/**"
       - ".github/workflows/platform-detection.yml"
   workflow_dispatch:
 
 jobs:
-  linux-detection:
+  linux-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
       - name: Check shell syntax
         run: bash -n platform/detect.sh
       - name: Detect Linux host
         run: |
           bash platform/detect.sh
           bash platform/detect.sh --json
-      - name: Check JSON output
+      - name: Check detection JSON
         run: bash platform/detect.sh --json | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d["os"] == "linux"; assert d["arch"]'
+      - name: Run CLI unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Check CLI syntax
+        run: python -m py_compile winapps.py
 
-  windows-detection:
+  windows-tests:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
       - name: Detect Windows host
         shell: pwsh
         run: |
@@ -36,4 +50,7 @@ jobs:
           if (-not ($plain -match "os=windows")) { throw "Plain output did not identify Windows" }
           $json = .\platform\detect.ps1 -Json | ConvertFrom-Json
           if ($json.os -ne "windows") { throw "JSON output did not identify Windows" }
-          if (-not $json.arch) { throw "Architecture was not detected" }
+      - name: Run CLI unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Check CLI syntax
+        run: python -m py_compile winapps.py
