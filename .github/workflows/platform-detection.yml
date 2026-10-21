@@ -1,0 +1,39 @@
+name: Platform detection
+
+on:
+  push:
+    paths:
+      - "platform/**"
+      - ".github/workflows/platform-detection.yml"
+  pull_request:
+    paths:
+      - "platform/**"
+      - ".github/workflows/platform-detection.yml"
+  workflow_dispatch:
+
+jobs:
+  linux-detection:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check shell syntax
+        run: bash -n platform/detect.sh
+      - name: Detect Linux host
+        run: |
+          bash platform/detect.sh
+          bash platform/detect.sh --json
+      - name: Check JSON output
+        run: bash platform/detect.sh --json | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d["os"] == "linux"; assert d["arch"]'
+
+  windows-detection:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect Windows host
+        shell: pwsh
+        run: |
+          $plain = .\platform\detect.ps1
+          if (-not ($plain -match "os=windows")) { throw "Plain output did not identify Windows" }
+          $json = .\platform\detect.ps1 -Json | ConvertFrom-Json
+          if ($json.os -ne "windows") { throw "JSON output did not identify Windows" }
+          if (-not $json.arch) { throw "Architecture was not detected" }
